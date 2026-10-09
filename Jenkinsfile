@@ -1,4 +1,4 @@
-pipeline {
+ pipeline {
     agent any
 
     environment {
@@ -6,17 +6,16 @@ pipeline {
     }
 
     stages {
-
         stage('Clone Repository') {
             steps {
-                git 'https://github.com/darshiniag/File1.git'
+                checkout scm
             }
         }
 
         stage('Build Docker Image') {
             steps {
                 script {
-                    docker.build("${DOCKER_IMAGE}: v1")
+                    docker.build("${DOCKER_IMAGE}:v1")
                 }
             }
         }
@@ -50,8 +49,7 @@ pipeline {
         }
 
         failure {
-            echo 'Pipeline failed'
+            echo 'Pipeline failed. Check the console output.'
         }
     }
 }
- 
