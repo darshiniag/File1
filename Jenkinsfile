@@ -2,7 +2,7 @@
     agent any
 
     environment {
-        DOCKER_IMAGE = "shreyavinay30/shreya"
+        DOCKER_IMAGE = "shreya"
     }
 
     stages {
@@ -15,7 +15,7 @@
 
         stage('Build Docker Image') {
             steps {
-                bat 'docker build -t %DOCKER_IMAGE%:v1.'
+                bat 'docker build -t %DOCKER_IMAGE%:latest.'
             }
         }
 
@@ -36,7 +36,7 @@
 
         stage('Push Docker Image') {
             steps {
-                bat 'docker push %DOCKER_IMAGE%:'
+                bat 'docker push %DOCKER_IMAGE%:latest'
             }
         }
     }
