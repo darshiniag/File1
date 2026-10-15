@@ -8,7 +8,7 @@
     stages {
         stage('Clone Repository') {
             steps {
-                git branch: 'main',
+                git branch: 'master',
                     url: 'https://github.com/darshiniag/File1.git'
             }
         }
