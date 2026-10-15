@@ -22,7 +22,7 @@
         stage('Login to Docker Hub') {
             steps {
                 withCredentials([string(
-                    credentialsId: 'DockerCredential',
+                    credentialsId: 'dockerhub-PAT',
                     variable: 'DOCKER_USER'
                 )]) {
                     bat '''
