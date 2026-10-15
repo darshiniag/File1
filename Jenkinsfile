@@ -1,4 +1,4 @@
-  pipeline {
+pipeline {
     agent any
 
     environment {
@@ -9,21 +9,21 @@
         stage('Clone Repository') {
             steps {
                 git branch: 'master',
-                    url: 'https://github.com/darshiniag/File1.git'
+                         url: 'https://github.com/darshiniag/File1.git'
             }
         }
 
         stage('Build Docker Image') {
             steps {
-                bat 'docker build -t %DOCKER_IMAGE%:latest.'
+                bat 'docker build -t %DOCKER_IMAGE%:latest .'
             }
         }
 
         stage('Login to Docker Hub') {
             steps {
                 withCredentials([string(
-                    credentialsId: 'dockerhub-PAT',
-                    variable: 'DOCKER_USER'
+                    credentialsId: 'DockerCredential',
+                    variable: 'DOCKER_PAT'
                 )]) {
                     bat '''
                     @echo off
